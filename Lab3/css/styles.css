@@ -1,0 +1,101 @@
+html {
+    height: 100%;
+    background: linear-gradient(45deg, #aee6e6 65%, #ffda77 35%);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+a:visited {
+    text-decoration: none;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffda77;
+    border-radius: 5px;
+}
+
+.list-item {
+    float: right;
+}
+
+.list-item a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: 'Castoro', serif;
+    transition-duration: 0.3s;
+}
+
+.list-item a:hover {
+    background-color: #fbf6f0;
+    cursor: pointer;
+    font-weight: bold;
+}
+.header-signup-login {
+    font-family: 'Castoro', serif;
+}
+.form-wrapper {
+    background-color: #fbf6f0;
+    border-radius: 7.5%;
+    padding: 1.5% 2.5% 1.5% 2.5%;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-element {
+    margin: 3%;
+    border: 2px solid #16697a;
+    border-radius: 4px;
+    width: 15rem;
+    height: 2.5rem;
+}
+::placeholder {
+    color: #bbbbbb;
+    font-family: 'Castoro', serif;
+    font-weight: bolder;
+}
+
+.btn {
+    padding: 14px 30px;
+    border: 2px solid #28abb9;
+    border-radius: 15px;
+    font-family: 'Castoro', serif;
+    transition-duration: 0.4s;
+    margin-top: 4%;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+.btn:focus {
+    outline: none;
+}
+
+.btn:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+.btn:hover {
+    background-color: #ffda77;
+    cursor: pointer;
+}
+
+.btn.light:hover {
+    color: #28abb9;
+}
+
+
