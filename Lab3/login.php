@@ -10,6 +10,7 @@ include_once 'header.php';
         <button class="btn"><i class="fas fa-sign-in-alt"></i> Log In</button>
     </form>
 </div>
+<script src="app.js"></script>
 </body>
 
 </html>

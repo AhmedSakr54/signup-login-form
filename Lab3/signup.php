@@ -12,6 +12,7 @@ include_once 'header.php';
         <button class="btn"><i class="fas fa-sign-in-alt"></i> Sign Up</button>
     </form>
 </div>
+<script src="app.js"></script>
 </body>
 
 </html>

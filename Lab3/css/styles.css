@@ -16,6 +16,7 @@ a {
     text-decoration: none;
     color: black;
 }
+
 a:visited {
     text-decoration: none;
 }
@@ -25,15 +26,15 @@ a:visited {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #ffda77;
     border-radius: 5px;
 }
+
 
 .list-item {
     float: right;
 }
 
-.list-item a {
+.list-link {
     display: block;
     text-align: center;
     padding: 14px 16px;
@@ -42,14 +43,27 @@ a:visited {
     transition-duration: 0.3s;
 }
 
-.list-item a:hover {
+.off-page-style {
+    background-color: #ffda77;
+}
+
+.on-page-style {
     background-color: #fbf6f0;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.list-link:hover {
+    background-color: #456268;
+    color: #fff;
     cursor: pointer;
     font-weight: bold;
 }
+
 .header-signup-login {
     font-family: 'Castoro', serif;
 }
+
 .form-wrapper {
     background-color: #fbf6f0;
     border-radius: 7.5%;
@@ -64,6 +78,7 @@ a:visited {
     width: 15rem;
     height: 2.5rem;
 }
+
 ::placeholder {
     color: #bbbbbb;
     font-family: 'Castoro', serif;
@@ -80,6 +95,7 @@ a:visited {
     font-size: 1.2rem;
     font-weight: 900;
 }
+
 .btn:focus {
     outline: none;
 }
@@ -97,5 +113,3 @@ a:visited {
 .btn.light:hover {
     color: #28abb9;
 }
-
-
