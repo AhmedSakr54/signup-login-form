@@ -19,6 +19,7 @@ const checkIfSignUpOrLogin = (fullName, repeatPassword) => {
 const validateForm = () => {
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
+    const errorParagraph = document.querySelector("p .error");
 
     let isSignUp = false;
     let fullName = document.querySelector("#fullname");
@@ -30,19 +31,23 @@ const validateForm = () => {
         isSignUp = true;
     }
     if (isSignUp && fullName === "") {
-        alert("fullName is empty");
+        errorParagraph.innerHTML("Empty Full Name Field.");
+        errorParagraph.classList.replace("hide", "show");
         return false;
     }
     if (email === "") {
-        alert("email is empty");
+        errorParagraph.innerHTML("Empty Email Field.");
+        errorParagraph.classList.replace("hide", "show");
         return false;
     }
     if (password === "") {
-        alert("password is empty");
+        errorParagraph.innerHTML("Empty Password Field.");
+        errorParagraph.classList.replace("hide", "show");
         return false;
     }
     if (isSignUp && repeatPassword === "") {
-        alert("confirm password is empty");
+        errorParagraph.innerHTML("Empty Confirm Password Field.");
+        errorParagraph.classList.replace("hide", "show");
         return false;
     }
     return true;

@@ -113,3 +113,22 @@ a:visited {
 .btn.light:hover {
     color: #28abb9;
 }
+
+.error {
+    color: red;
+    font-weight: bolder;
+    font-family: 'Castoro', serif;
+    margin-bottom: 1%;
+}
+.success {
+    color: #28abb9;
+    font-weight: bolder;
+    font-family: 'Castoro', serif;
+    margin-bottom: 1%;
+}
+.hide {
+    display: none;
+}
+.show {
+    display: inline;
+}
