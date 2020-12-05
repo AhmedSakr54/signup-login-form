@@ -12,14 +12,13 @@ include_once 'header.php';
         <input type="password" name="password" placeholder="Password" class="form-element" id="password"><br>
         <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-element"
             id="repeat-password"><br>
-        <button type="submit" name="submit" class="btn"><i class="fas fa-sign-in-alt"></i> Sign Up</button>
+        <button type="submit" name="submit" class="btn"><i class="fas fa-sign-in-alt"></i> Sign Up</button><br>
 
-        <p class="error hide"></p>
+        <p class="error hide" id="err-paragraph"></p>
     </form>
-
-    <script src="app.js"></script>
 </div>
 
+<script src="app.js"></script>
 </body>
 
 </html>
