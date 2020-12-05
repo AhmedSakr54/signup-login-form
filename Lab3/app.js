@@ -16,43 +16,53 @@ const checkIfSignUpOrLogin = (fullName, repeatPassword) => {
     return true;
 };
 
-const validateForm = () => {
-    const email = document.querySelector("#email").value;
-    const password = document.querySelector("#password").value;
-    const errorParagraph = document.querySelector("#err-paragraph");
+// const validateForm = () => {
+//     const email = document.querySelector("#email").value;
+//     const password = document.querySelector("#password").value;
+//     const errorParagraph = document.querySelector("#err-paragraph");
 
-    let isSignUp = false;
-    let fullName = document.querySelector("#fullname");
-    let repeatPassword = document.querySelector("#repeat-password");
+//     let isSignUp = false;
+//     let fullName = document.querySelector("#fullname");
+//     let repeatPassword = document.querySelector("#repeat-password");
 
-    if (checkIfSignUpOrLogin(fullName, repeatPassword)) {
-        fullName = fullName.value;
-        repeatPassword = repeatPassword.value;
-        isSignUp = true;
-    }
-    if (isSignUp && fullName === "") {
-        errorParagraph.innerHTML = "Empty Full Name Field.";
-        errorParagraph.classList.replace("hide", "show");
-        return false;
-    }
-    if (email === "") {
-        errorParagraph.innerHTML = "Empty Email Field.";
-        errorParagraph.classList.replace("hide", "show");
-        return false;
-    }
-    if (password === "") {
-        errorParagraph.innerHTML = "Empty Password Field.";
-        errorParagraph.classList.replace("hide", "show");
-        return false;
-    }
-    if (isSignUp && repeatPassword === "") {
-        errorParagraph.innerHTML = "Empty Confirm Password Field.";
-        errorParagraph.classList.replace("hide", "show");
-        return false;
-    }
-    return true;
+//     if (checkIfSignUpOrLogin(fullName, repeatPassword)) {
+//         fullName = fullName.value;
+//         repeatPassword = repeatPassword.value;
+//         isSignUp = true;
+//     }
+//     if (isSignUp && fullName === "") {
+//         errorParagraph.innerHTML = "Empty Full Name Field.";
+//         errorParagraph.classList.replace("hide", "show");
+//         return false;
+//     }
+//     if (email === "") {
+//         errorParagraph.innerHTML = "Empty Email Field.";
+//         errorParagraph.classList.replace("hide", "show");
+//         return false;
+//     }
+//     if (password === "") {
+//         errorParagraph.innerHTML = "Empty Password Field.";
+//         errorParagraph.classList.replace("hide", "show");
+//         return false;
+//     }
+//     if (isSignUp && repeatPassword === "") {
+//         errorParagraph.innerHTML = "Empty Confirm Password Field.";
+//         errorParagraph.classList.replace("hide", "show");
+//         return false;
+//     }
+//     return true;
+// };
+
+const reloadForm = () => {
+    const email = document.querySelector("#email");
+    const password = document.querySelector("#password");
+    const fullName = document.querySelector("#fullname");
+    const repeatPassword = document.querySelector("#repeat-password");
+    email.value = "";
+    password.value = "";
+    fullName.value = "";
+    repeatPassword.value = "";
 };
-
 const form = document.getElementById("postForm");
 const validateFormAjax = (e) => {
     e.preventDefault();
@@ -60,9 +70,10 @@ const validateFormAjax = (e) => {
     const password = document.querySelector("#password").value;
     const errorParagraph = document.querySelector("#err-paragraph");
 
-    let isSignUp = false;
     let fullName = document.querySelector("#fullname");
     let repeatPassword = document.querySelector("#repeat-password");
+    let isSignUp = false;
+
 
     if (checkIfSignUpOrLogin(fullName, repeatPassword)) {
         fullName = fullName.value;
@@ -70,20 +81,27 @@ const validateFormAjax = (e) => {
         isSignUp = true;
     }
     let requestData;
+    requestData = new FormData();
+    requestData.append("email", email);
+    requestData.append("password", password);
+    requestData.append("submit", "submit");
     if (isSignUp) {
-        requestData = `fullname=${fullName}&email=${email}&password=${password}&repeatPassword=${repeatPassword}`;
-    }
-    else {
-        requestData = `email=${email}&password=${password}`;
+        requestData.append("fullname", fullName);
+        requestData.append("confirm_password", repeatPassword);
     }
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'helper/signup_check.php', true);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onload = () => {
-        console.log(xhr.responseText);
-        // errorParagraph.innerHTML = xhr.responseText;
-        // errorParagraph.classList.replace("hide", "show");
+        errorParagraph.innerHTML = xhr.responseText;
+        errorParagraph.classList.replace("hide", "show");
+        if (errorParagraph.innerHTML == "Registration Successful") {
+            errorParagraph.classList.add("success");
+            if (isSignUp)
+                reloadForm();
+        }
+        else 
+            errorParagraph.classList.add("error");
     };
     xhr.send(requestData);
 };
-// form.addEventListener("submit", validateFormAjax);
+form.addEventListener("submit", validateFormAjax);

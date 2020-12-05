@@ -10,22 +10,19 @@ $email = $_POST["email"];
 $password = $_POST["password"];
 $confirm_password = $_POST["confirm_password"];
 
+
 require_once 'dbh.php';
 require_once 'helper_functions.php';
 
-// if (emptySignupFields($fullname, $email, $password, $confirm_password)) {
-//     header("location: ../signup.php?error=emptyField");
-//     exit();
-// }
-if (emptyFullNameField($fullname)) {
+if (emptyField($fullname)) {
     echo "Empty Full Name Field";
     exit();
 }
-if (emptyFullNameField($email)) {
+if (emptyField($email)) {
     echo "Empty Email Field";
     exit();
 }
-if (emptyFullNameField($password)) {
+if (emptyField($password)) {
     echo "Empty Password Field";
     exit();
 }
@@ -48,3 +45,5 @@ if (emailExists($conn, $email)) {
 }
 
 signUp($conn, $fullname, $email, $password);
+echo "Registration Successful";
+

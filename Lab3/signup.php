@@ -5,7 +5,7 @@ include_once 'header.php';
 <div class="form-wrapper">
     <h1 class="header-signup-login"><i class="fas fa-user-plus"></i> Sign Up</h1>
 
-    <form action="helper/signup_check.php" method="POST" onsubmit="return validateForm()" id="postForm">
+    <form id="postForm">
 
         <input type="text" name="fullname" placeholder="Full Name" class="form-element" id="fullname"><br>
         <input type="email" name="email" placeholder="Email" class="form-element" id="email"><br>
@@ -14,7 +14,7 @@ include_once 'header.php';
             id="repeat-password"><br>
         <button type="submit" name="submit" class="btn"><i class="fas fa-sign-in-alt"></i> Sign Up</button><br>
 
-        <p class="error hide" id="err-paragraph"></p>
+        <p class="hide" id="err-paragraph"></p>
     </form>
 </div>
 
