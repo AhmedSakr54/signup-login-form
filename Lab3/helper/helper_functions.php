@@ -1,7 +1,31 @@
 <?php
 
-function emptySignupFields($fullname, $email, $password, $confirm_password) {
-    if (empty($fullname) || empty($email) || empty($password) || empty("$confirm_password")) {
+// function emptySignupFields($fullname, $email, $password, $confirm_password) {
+//     if (empty($fullname) || empty($email) || empty($password) || empty("$confirm_password")) {
+//         return true;
+//     }
+//     return false;
+// }
+function emptyFullNameField($fullname) {
+    if (empty($fullname)) {
+        return true;
+    }
+    return false;
+}
+function emptyEmailField($email) {
+    if (empty($email)) {
+        return true;
+    }
+    return false;
+}
+function emptyPasswordField($password) {
+    if (empty($password)) {
+        return true;
+    }
+    return false;
+}
+function emptyConfirmPasswordField($confirm_password) {
+    if (empty($confirm_password)) {
         return true;
     }
     return false;

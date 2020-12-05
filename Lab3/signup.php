@@ -5,7 +5,7 @@ include_once 'header.php';
 <div class="form-wrapper">
     <h1 class="header-signup-login"><i class="fas fa-user-plus"></i> Sign Up</h1>
 
-    <form action="helper/signup_check.php" method="POST" onsubmit="return validateForm()">
+    <form action="helper/signup_check.php" method="POST" onsubmit="return validateForm()" id="postForm">
 
         <input type="text" name="fullname" placeholder="Full Name" class="form-element" id="fullname"><br>
         <input type="email" name="email" placeholder="Email" class="form-element" id="email"><br>

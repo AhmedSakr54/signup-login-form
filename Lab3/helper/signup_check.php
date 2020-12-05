@@ -13,24 +13,37 @@ $confirm_password = $_POST["confirm_password"];
 require_once 'dbh.php';
 require_once 'helper_functions.php';
 
-if (emptySignupFields($fullname, $email, $password, $confirm_password)) {
-    header("location: ../signup.php?error=emptyField");
+// if (emptySignupFields($fullname, $email, $password, $confirm_password)) {
+//     header("location: ../signup.php?error=emptyField");
+//     exit();
+// }
+if (emptyFullNameField($fullname)) {
+    echo "Empty Full Name Field";
     exit();
 }
+if (emptyFullNameField($email)) {
+    echo "Empty Email Field";
+    exit();
+}
+if (emptyFullNameField($password)) {
+    echo "Empty Password Field";
+    exit();
+}
+
 if (invalidFullName($fullname)) {
-    header("location: ../signup.php?error=invalidFullName");
+    echo "Invalid Full Name";
     exit();
 }
 if (invalidEmail($email)) {
-    header("location: ../signup.php?error=invalidEmail");
+    echo "Invalid Email";
     exit();
 }
 if (passwordMismatch($password, $confirm_password) !== false) {
-    header("location: ../signup.php?error=nonmatchingpasswords");
+    echo "Confirm password is not the same as password";
     exit();
 }
 if (emailExists($conn, $email)) {
-    header("location: ../signup.php?error=emailexits");
+    echo "Email already exists";
     exit();
 }
 

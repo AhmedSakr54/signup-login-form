@@ -52,3 +52,38 @@ const validateForm = () => {
     }
     return true;
 };
+
+const form = document.getElementById("postForm");
+const validateFormAjax = (e) => {
+    e.preventDefault();
+    const email = document.querySelector("#email").value;
+    const password = document.querySelector("#password").value;
+    const errorParagraph = document.querySelector("#err-paragraph");
+
+    let isSignUp = false;
+    let fullName = document.querySelector("#fullname");
+    let repeatPassword = document.querySelector("#repeat-password");
+
+    if (checkIfSignUpOrLogin(fullName, repeatPassword)) {
+        fullName = fullName.value;
+        repeatPassword = repeatPassword.value;
+        isSignUp = true;
+    }
+    let requestData;
+    if (isSignUp) {
+        requestData = `fullname=${fullName}&email=${email}&password=${password}&repeatPassword=${repeatPassword}`;
+    }
+    else {
+        requestData = `email=${email}&password=${password}`;
+    }
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'helper/signup_check.php', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onload = () => {
+        console.log(xhr.responseText);
+        // errorParagraph.innerHTML = xhr.responseText;
+        // errorParagraph.classList.replace("hide", "show");
+    };
+    xhr.send(requestData);
+};
+// form.addEventListener("submit", validateFormAjax);
