@@ -77,8 +77,8 @@ function userExists($conn, $email, $password) {
     mysqli_stmt_bind_param($stmt, "ss", $email, $md5EncryptedPassword);
     mysqli_stmt_execute($stmt);
     $results = mysqli_stmt_get_result($stmt);
-    if (mysqli_fetch_assoc($results)) {
-        return true;
+    if ($row = mysqli_fetch_assoc($results)) {
+        return $row;
     }
     mysqli_free_result($results);
     mysqli_stmt_close($stmt);

@@ -100,6 +100,9 @@ const validateFormAjax = (e) => {
             if (isSignUp)
                 reloadForm();
         }
+        else if (errorParagraph.innerHTML == "") {
+            window.location.href = "loggedin.php";
+        }
         else 
             errorParagraph.classList.add("error");
     };

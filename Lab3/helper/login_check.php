@@ -18,7 +18,12 @@ if (invalidEmail($email)) {
     echo "You entered an invalid Email";
     exit();
 }
-if (!userExists($conn, $email, $password)) {
+$userExists = userExists($conn, $email, $password);
+if ($userExists === false) {
     echo "Wrong email or password";
+    exit();
 }
+session_start();
+$_SESSION["user_name"] = $userExists["NAME"];
+
 
