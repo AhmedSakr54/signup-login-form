@@ -65,3 +65,22 @@ function signUp($conn, $fullname, $email, $password) {
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 }
+
+function userExists($conn, $email, $password) {
+    $md5EncryptedPassword = md5($password);
+    $sql = "SELECT * FROM `user` WHERE email=? AND PASSWORD=?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Something went wrong. Please, try again.";
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "ss", $email, $md5EncryptedPassword);
+    mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
+    if (mysqli_fetch_assoc($results)) {
+        return true;
+    }
+    mysqli_free_result($results);
+    mysqli_stmt_close($stmt);
+    return false;
+}

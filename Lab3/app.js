@@ -73,12 +73,13 @@ const validateFormAjax = (e) => {
     let fullName = document.querySelector("#fullname");
     let repeatPassword = document.querySelector("#repeat-password");
     let isSignUp = false;
-
+    let path = 'helper/login_check.php';
 
     if (checkIfSignUpOrLogin(fullName, repeatPassword)) {
         fullName = fullName.value;
         repeatPassword = repeatPassword.value;
         isSignUp = true;
+        path = 'helper/signup_check.php';
     }
     let requestData;
     requestData = new FormData();
@@ -90,7 +91,7 @@ const validateFormAjax = (e) => {
         requestData.append("confirm_password", repeatPassword);
     }
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'helper/signup_check.php', true);
+    xhr.open('POST', path, true);
     xhr.onload = () => {
         errorParagraph.innerHTML = xhr.responseText;
         errorParagraph.classList.replace("hide", "show");

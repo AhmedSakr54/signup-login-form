@@ -11,13 +11,14 @@ require_once 'dbh.php';
 require_once 'helper_functions.php';
 
 if (emptyLoginFields($email, $password)) {
-    header("location: ../login.php/error=emptyFields");
+    echo "Empty Email/Password Fields";
     exit();
 }
 if (invalidEmail($email)) {
-    header("location: ../login.php?error=invalidEmail");
+    echo "You entered an invalid Email";
     exit();
 }
-if (emailExists($conn, $email)) {
-
+if (!userExists($conn, $email, $password)) {
+    echo "Wrong email or password";
 }
+
