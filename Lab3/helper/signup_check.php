@@ -14,15 +14,15 @@ $confirm_password = $_POST["confirm_password"];
 require_once 'dbh.php';
 require_once 'helper_functions.php';
 
-if (emptyField($fullname)) {
+if (empty($fullname)) {
     echo "Empty Full Name Field";
     exit();
 }
-if (emptyField($email)) {
+if (empty($email)) {
     echo "Empty Email Field";
     exit();
 }
-if (emptyField($password)) {
+if (empty($password)) {
     echo "Empty Password Field";
     exit();
 }

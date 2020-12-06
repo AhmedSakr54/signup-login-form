@@ -14,7 +14,7 @@ include_once 'header.php';
             id="repeat-password"><br>
         <button type="submit" name="submit" class="btn"><i class="fas fa-sign-in-alt"></i> Sign Up</button><br>
 
-        <p class="hide" id="err-paragraph"></p>
+        <p class="hide error" id="err-paragraph"></p>
     </form>
 </div>
 

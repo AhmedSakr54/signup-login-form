@@ -96,7 +96,7 @@ const validateFormAjax = (e) => {
         errorParagraph.innerHTML = xhr.responseText;
         errorParagraph.classList.replace("hide", "show");
         if (errorParagraph.innerHTML == "Registration Successful") {
-            errorParagraph.classList.add("success");
+            errorParagraph.classList.replace("error", "success");
             if (isSignUp)
                 reloadForm();
         }
@@ -104,7 +104,7 @@ const validateFormAjax = (e) => {
             window.location.href = "loggedin.php";
         }
         else 
-            errorParagraph.classList.add("error");
+            errorParagraph.classList.replace("success", "error");
     };
     xhr.send(requestData);
 };
