@@ -67,12 +67,12 @@ a:visited {
 .form-wrapper {
     background-color: #fbf6f0;
     border-radius: 7.5%;
-    padding: 1.5% 2.5% 1.5% 2.5%;
+    padding: 1.5% 1.5%;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .form-element {
-    margin: 3%;
+    margin: 3% 0%;
     border: 2px solid #16697a;
     border-radius: 4px;
     width: 15rem;

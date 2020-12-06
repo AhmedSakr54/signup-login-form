@@ -84,3 +84,17 @@ function userExists($conn, $email, $password) {
     mysqli_stmt_close($stmt);
     return false;
 }
+
+function getDepartments($conn) {
+    $sql = "SELECT dept_name, description FROM `department`";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Something went wrong. Please, try again.";
+        exit();
+    }
+    mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
+    while ($row = mysqli_fetch_array($results, MYSQLI_NUM)) {
+        echo "<tr class='active-row'><td>".$row[0]."</td><td>".$row[1]."</td></tr>";
+    }
+}
