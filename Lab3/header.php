@@ -20,3 +20,10 @@
             <li class="list-item signup"><a class="list-link off-page-style" href="./signup.php">Sign Up</a></li>
         </ul>
     </div>
+    <?php
+    session_start();
+    if (isset($_SESSION["user_name"]))
+        session_destroy();
+    else 
+        session_abort();
+    ?>
