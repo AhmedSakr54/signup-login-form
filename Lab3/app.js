@@ -16,42 +16,42 @@ const checkIfSignUpOrLogin = (fullName, repeatPassword) => {
     return true;
 };
 
-// const validateForm = () => {
-//     const email = document.querySelector("#email").value;
-//     const password = document.querySelector("#password").value;
-//     const errorParagraph = document.querySelector("#err-paragraph");
+const validateForm = () => {
+    const email = document.querySelector("#email").value;
+    const password = document.querySelector("#password").value;
+    const errorParagraph = document.querySelector("#err-paragraph");
 
-//     let isSignUp = false;
-//     let fullName = document.querySelector("#fullname");
-//     let repeatPassword = document.querySelector("#repeat-password");
+    let isSignUp = false;
+    let fullName = document.querySelector("#fullname");
+    let repeatPassword = document.querySelector("#repeat-password");
 
-//     if (checkIfSignUpOrLogin(fullName, repeatPassword)) {
-//         fullName = fullName.value;
-//         repeatPassword = repeatPassword.value;
-//         isSignUp = true;
-//     }
-//     if (isSignUp && fullName === "") {
-//         errorParagraph.innerHTML = "Empty Full Name Field.";
-//         errorParagraph.classList.replace("hide", "show");
-//         return false;
-//     }
-//     if (email === "") {
-//         errorParagraph.innerHTML = "Empty Email Field.";
-//         errorParagraph.classList.replace("hide", "show");
-//         return false;
-//     }
-//     if (password === "") {
-//         errorParagraph.innerHTML = "Empty Password Field.";
-//         errorParagraph.classList.replace("hide", "show");
-//         return false;
-//     }
-//     if (isSignUp && repeatPassword === "") {
-//         errorParagraph.innerHTML = "Empty Confirm Password Field.";
-//         errorParagraph.classList.replace("hide", "show");
-//         return false;
-//     }
-//     return true;
-// };
+    if (checkIfSignUpOrLogin(fullName, repeatPassword)) {
+        fullName = fullName.value;
+        repeatPassword = repeatPassword.value;
+        isSignUp = true;
+    }
+    if (isSignUp && fullName === "") {
+        errorParagraph.innerHTML = "Empty Full Name Field.";
+        errorParagraph.classList.replace("hide", "show");
+        return false;
+    }
+    if (email === "") {
+        errorParagraph.innerHTML = "Empty Email Field.";
+        errorParagraph.classList.replace("hide", "show");
+        return false;
+    }
+    if (password === "") {
+        errorParagraph.innerHTML = "Empty Password Field.";
+        errorParagraph.classList.replace("hide", "show");
+        return false;
+    }
+    if (isSignUp && repeatPassword === "") {
+        errorParagraph.innerHTML = "Empty Confirm Password Field.";
+        errorParagraph.classList.replace("hide", "show");
+        return false;
+    }
+    return true;
+};
 
 const reloadForm = () => {
     const email = document.querySelector("#email");
@@ -66,6 +66,9 @@ const reloadForm = () => {
 const form = document.getElementById("postForm");
 const validateFormAjax = (e) => {
     e.preventDefault();
+    if (!validateForm()) {
+        return;
+    }
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
     const errorParagraph = document.querySelector("#err-paragraph");
