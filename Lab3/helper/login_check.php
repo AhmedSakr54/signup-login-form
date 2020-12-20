@@ -20,7 +20,7 @@ if (invalidEmail($email)) {
 }
 $userExists = userExists($conn, $email, $password);
 if ($userExists === false) {
-    echo "Wrong email or password";
+    echo "Wrong email or password<br>User does not exist";
     exit();
 }
 session_start();

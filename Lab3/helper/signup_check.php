@@ -36,7 +36,7 @@ if (invalidEmail($email)) {
     exit();
 }
 if (passwordMismatch($password, $confirm_password) !== false) {
-    echo "Confirm password is not the same as password";
+    echo "Confirm password is<br>not the same as password";
     exit();
 }
 if (emailExists($conn, $email)) {

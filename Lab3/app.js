@@ -33,21 +33,25 @@ const validateForm = () => {
     if (isSignUp && fullName === "") {
         errorParagraph.innerHTML = "Empty Full Name Field.";
         errorParagraph.classList.replace("hide", "show");
+        errorParagraph.classList.replace("success", "error");
         return false;
     }
     if (email === "") {
         errorParagraph.innerHTML = "Empty Email Field.";
         errorParagraph.classList.replace("hide", "show");
+        errorParagraph.classList.replace("success", "error");
         return false;
     }
     if (password === "") {
         errorParagraph.innerHTML = "Empty Password Field.";
         errorParagraph.classList.replace("hide", "show");
+        errorParagraph.classList.replace("success", "error");
         return false;
     }
     if (isSignUp && repeatPassword === "") {
         errorParagraph.innerHTML = "Empty Confirm Password Field.";
         errorParagraph.classList.replace("hide", "show");
+        errorParagraph.classList.replace("success", "error");
         return false;
     }
     return true;
@@ -66,12 +70,12 @@ const reloadForm = () => {
 const form = document.getElementById("postForm");
 const validateFormAjax = (e) => {
     e.preventDefault();
+    const errorParagraph = document.querySelector("#err-paragraph");
     if (!validateForm()) {
         return;
     }
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
-    const errorParagraph = document.querySelector("#err-paragraph");
 
     let fullName = document.querySelector("#fullname");
     let repeatPassword = document.querySelector("#repeat-password");
