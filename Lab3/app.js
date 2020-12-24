@@ -16,10 +16,16 @@ const checkIfSignUpOrLogin = (fullName, repeatPassword) => {
     return true;
 };
 
+/*
+    front-end validation
+    checks if any of the input fields is empty and shows corresponding error message
+*/
 const validateForm = () => {
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
     const errorParagraph = document.querySelector("#err-paragraph");
+    let success = true;
+    errorParagraph.innerHTML = "";
 
     let isSignUp = false;
     let fullName = document.querySelector("#fullname");
@@ -31,25 +37,22 @@ const validateForm = () => {
         isSignUp = true;
     }
     if (isSignUp && fullName === "") {
-        errorParagraph.innerHTML = "Empty Full Name Field.";
-        errorParagraph.classList.replace("hide", "show");
-        errorParagraph.classList.replace("success", "error");
-        return false;
+        errorParagraph.innerHTML += "Empty Full Name Field.<br>";
+        success = false;
     }
     if (email === "") {
-        errorParagraph.innerHTML = "Empty Email Field.";
-        errorParagraph.classList.replace("hide", "show");
-        errorParagraph.classList.replace("success", "error");
-        return false;
+        errorParagraph.innerHTML += "Empty Email Field.<br>";
+        success = false;
     }
     if (password === "") {
-        errorParagraph.innerHTML = "Empty Password Field.";
-        errorParagraph.classList.replace("hide", "show");
-        errorParagraph.classList.replace("success", "error");
-        return false;
+        errorParagraph.innerHTML += "Empty Password Field.<br>";
+        success = false;
     }
     if (isSignUp && repeatPassword === "") {
-        errorParagraph.innerHTML = "Empty Confirm Password Field.";
+        errorParagraph.innerHTML += "Empty Confirm Password Field.<br>";
+        success = false;
+    }
+    if (!success) {
         errorParagraph.classList.replace("hide", "show");
         errorParagraph.classList.replace("success", "error");
         return false;
@@ -67,6 +70,7 @@ const reloadForm = () => {
     fullName.value = "";
     repeatPassword.value = "";
 };
+
 const form = document.getElementById("postForm");
 const validateFormAjax = (e) => {
     e.preventDefault();
@@ -97,6 +101,7 @@ const validateFormAjax = (e) => {
         requestData.append("fullname", fullName);
         requestData.append("confirm_password", repeatPassword);
     }
+    // AJAX part 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', path, true);
     xhr.onload = () => {
@@ -106,11 +111,9 @@ const validateFormAjax = (e) => {
             errorParagraph.classList.replace("error", "success");
             if (isSignUp)
                 reloadForm();
-        }
-        else if (errorParagraph.innerHTML == "") {
+        } else if (errorParagraph.innerHTML == "") {
             window.location.href = "loggedin.php";
-        }
-        else 
+        } else
             errorParagraph.classList.replace("success", "error");
     };
     xhr.send(requestData);

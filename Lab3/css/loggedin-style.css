@@ -16,6 +16,7 @@ h1 {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
 }
+
 .styled-table thead tr {
     background-color: #009879;
     color: #ffffff;
@@ -27,6 +28,7 @@ h1 {
     padding: 12px 15px;
     text-align: center;
 }
+
 .styled-table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
@@ -38,7 +40,7 @@ h1 {
 .styled-table tbody tr:last-of-type {
     border-bottom: thin solid #009879;
 }
+
 .active-row:hover {
     color: #009879;
-    cursor: pointer;
 }
